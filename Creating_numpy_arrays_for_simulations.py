@@ -761,21 +761,13 @@ def calc_V(collection, time_stamps, amount_of_simulations, variable):
 #####################################################################################
     
 # next computation is to run it through with location = 100 and individual = 50
-location_amount = 5
-#location_amount = 6
-individual_amount = 6
-#individual_amount = 4
+location_amount = 10
+individual_amount = 10
 time_stamps = 5
-#groups = 5
-gamma_values = [1, 3, 5, 7, 9]
-beta_values = np.linspace(1, 10, 19, endpoint = True)
+gamma_values = np.linspace(1, 10, 10, endpoint = True)
+beta_values = np.linspace(1, 10, 10, endpoint = True)
 rho_values = np.linspace(0.1, 1.0, 10, endpoint=True)
-#simulation_amount = 10
-simulation_amount = 1
-
-#gamma_values = [2]#, 6]
-#beta_values = [5]#, 10]
-#rho_values = [0.2, 1]
+simulation_amount = 10
 
 full_IxS_collection = []
 full_IxI_collection = []
@@ -1002,11 +994,11 @@ for j in range(simulation_amount):
 ###np.save('IxI_beta_collection_50_time_10_simulations', beta_IxI_collection)
 ###np.save('full_tripartite_collection_100_time_10_simulations', beta_tripartite_collection)
 ###np.save('homerange_IxI_collection_100_time_10_simulations', beta_homerange_IxI_collection)
-#np.save('IxS_iterating_through_all_3_knobs_where_location_25_individual_25_time_20_simulations_10', full_IxS_collection)
-#np.save('IxI_iterating_through_all_3_knobs_where_location_25_individual_25_time_20_simulations_10', full_IxI_collection)
-#np.save('full_tripartite_iterating_through_all_3_knobs_where_location_25_individual_25_time_20_simulations_10', full_tripartite_collection)
-#np.save('homerange_IxI_iterating_through_all_3_knobs_where_location_25_individual_25_time_20_simulations_10', full_homerange_IxI_collection)
-#np.save('SxS_iterating_through_all_3_knobs_where_location_25_individual_25_time_20_simulations_10', full_SxS_collection)
+np.save('IxS_iterating_through_all_3_knobs_where_location_25_individual_25_time_20_simulations_10', full_IxS_collection)
+np.save('IxI_iterating_through_all_3_knobs_where_location_25_individual_25_time_20_simulations_10', full_IxI_collection)
+np.save('full_tripartite_iterating_through_all_3_knobs_where_location_25_individual_25_time_20_simulations_10', full_tripartite_collection)
+np.save('homerange_IxI_iterating_through_all_3_knobs_where_location_25_individual_25_time_20_simulations_10', full_homerange_IxI_collection)
+np.save('SxS_iterating_through_all_3_knobs_where_location_25_individual_25_time_20_simulations_10', full_SxS_collection)
 ##print('beta_ IxS collection\n', beta_IxS_collection)
 ##np.save('IxS_binary_beta_collection_50_time_10_simulations', beta_binary_IxS_collection)
 ##np.save('IxI_binary_beta_collection_50_time_10_simulations', beta_binary_IxI_collection)
@@ -1169,7 +1161,7 @@ for j in range(simulation_amount):
 #outputs_IxI = calc_V(full_IxI_collection, time_stamps, simulation_amount, 2)            
 #outputs_tripartite = calc_V(full_tripartite_collection, time_stamps, simulation_amount, 3)
 #outputs_homerange_IxI = calc_V(full_homerange_IxI_collection, time_stamps, simulation_amount, 4)
-outputs_SxS = calc_V(full_SxS_collection, time_stamps, simulation_amount, 5)
+#outputs_SxS = calc_V(full_SxS_collection, time_stamps, simulation_amount, 5)
 #
 ## This is computing the Michaelis inputs for each output already calculated
 #input_list = list(range(1, time_stamps + 1))
