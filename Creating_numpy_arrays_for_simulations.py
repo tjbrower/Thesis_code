@@ -341,7 +341,7 @@ def IxS(list_of_tripartites, time_stamps, individual_amount, location_amount):
     for i in range(time_stamps):
         full_matrix += list_of_tripartites[i]
      #   print(full_matrix, '\n')
- #   print("this should be the summed up full_matrix\n", full_matrix)
+    print("This is the full IxS\n", full_matrix)
     return(full_matrix)
 
 ##############################################################################################
@@ -381,10 +381,10 @@ def unipartite_square_matrix(collection_of_matrices, individuals,
     return ind_matrix
 
 ##################################################################################
-# SxS Unipartite Matrix; I am having issues with this code. I need to spend a few hours
-# on it where I am actually capturing the correct rows and columns. I think I might just
-# need to change a few things around with the i and j variables but other than that I
-# think it will work fine.
+# SxS Unipartite Matrix
+# Got the code right. Only increasing a node value if more individuals
+# share the same location. Max value of a node will be equal to the number 
+# of individuals in the simulation.
 ##################################################################################
 def SxS_Matrix(IxS, locations, individuals):
     
@@ -421,17 +421,8 @@ def SxS_Matrix(IxS, locations, individuals):
                 # If the certain 'location' is being inhabited in both arrays then investigate
                 if first_column[k] > 0 and next_column[k] > 0:
 #                    print('We have reached the first logical step!')
-                    
-                    # if they're the same value, then mark that number in the array above
-                    if first_column[k] == next_column[k]:
-                        node_of_interest += first_column[k]
-                    
-                    # Otherwise, choose the smalle of the two numbers and mark that instead
-                    elif first_column[k] < next_column[k]:
-                        node_of_interest += first_column[k]
-                    else:
-                        node_of_interest += next_column[k]
-        
+                    node_of_interest += 1                    
+                
             # This is me filling in the SxS matrix with the summed up connections between locations
             SxS[i][j] = node_of_interest
             SxS[j][i] = node_of_interest
@@ -441,26 +432,56 @@ def SxS_Matrix(IxS, locations, individuals):
     return(SxS)
 ##################################################################################
 # Homerange IxI matrix
+# For this we are comparing individuals separately, meaning
+# we will not have a symmetric matrix. Also we will be normalizing by the
+# amount of inhabited locations by the individuals
 ##################################################################################
 def Homerange_IxI(IxS_matrix, individuals,
                   locations, time_stamps):
     
     ind_matrix = np.zeros((individuals, individuals))
-    tran_matrix = np.transpose(IxS_matrix)
-    # Going through the IxS matrix so that we can create an IxI matrix 
+    
     for i in range(individuals):
-        for j in range(locations):
-            if tran_matrix[j][i] > 0:
-                for k in range(individuals):
-                    if tran_matrix[j][k] > 0:
-                        if tran_matrix[j][i] < tran_matrix[j][k]:
-                            ind_matrix[k][i] = tran_matrix[j][i]
-                        else:
-                            ind_matrix[k][i] = tran_matrix[j][k]
-                        if k == i:
-                            ind_matrix[k][i] = 0
-                            
-    print('This is the IxS matrix\n', IxS_matrix, '\nThis is the Homerange IxI\n', ind_matrix)
+        firstIndividual = IxS_matrix[i]        
+        for k in range(individuals):
+            if i == k:
+                continue
+            else:
+                secondIndividual = IxS_matrix[k]
+            nodeOfInterest = 0
+            
+            array = np.nonzero(secondIndividual)
+            dividingValue = len(array[0])
+            #print('this is the IxS matrix\n', IxS_matrix,
+#                  '\n current individual row\n', firstIndividual,
+#                  '\n array of nonzero entries\n', array,
+#                  '\nthis is the dividing value\n', dividingValue)
+            for j in range(locations):
+                if firstIndividual[j] == 0 or secondIndividual[j] == 0:
+                    continue
+                if firstIndividual[j] > 0 and secondIndividual[j] > 0:
+                    nodeOfInterest += 1
+#                print('this is the ', i+1, ' individual\n', firstIndividual,
+#                      '\n ', k + 1, ' individual\n', secondIndividual,
+#                      '\n dividing value\n', dividingValue)
+                
+                nodeValue = nodeOfInterest/dividingValue
+                ind_matrix[i][k] = nodeValue
+#                print('ind matrix\n', ind_matrix)
+#    # Going through the IxS matrix so that we can create an IxI matrix 
+#    for i in range(individuals):
+#        for j in range(locations):
+#            if tran_matrix[j][i] > 0:
+#                for k in range(individuals):
+#                    if tran_matrix[j][k] > 0:
+#                        if tran_matrix[j][i] < tran_matrix[j][k]:
+#                            ind_matrix[k][i] = tran_matrix[j][i]
+#                        else:
+#                            ind_matrix[k][i] = tran_matrix[j][k]
+#                        if k == i:
+#                            ind_matrix[k][i] = 0
+#                            
+#    print('This is the IxS matrix\n', IxS_matrix, '\nThis is the Homerange IxI\n', ind_matrix)
     return(ind_matrix)
 ##################################################################################
 # This helps compute the VNE
@@ -746,15 +767,15 @@ individual_amount = 6
 #individual_amount = 4
 time_stamps = 5
 #groups = 5
-#gamma_values = [1, 3, 5, 7, 9]
-#beta_values = np.linspace(1, 10, 19, endpoint = True)
-#rho_values = np.linspace(0.1, 1.0, 10, endpoint=True)
+gamma_values = [1, 3, 5, 7, 9]
+beta_values = np.linspace(1, 10, 19, endpoint = True)
+rho_values = np.linspace(0.1, 1.0, 10, endpoint=True)
 #simulation_amount = 10
 simulation_amount = 1
 
-gamma_values = [2]
-beta_values = [10]
-rho_values = [1]
+#gamma_values = [2]#, 6]
+#beta_values = [5]#, 10]
+#rho_values = [0.2, 1]
 
 full_IxS_collection = []
 full_IxI_collection = []
