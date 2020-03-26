@@ -23,18 +23,18 @@ simulation_amount = 10
 #print(pd.options.display.max_columns)
 
 #michaelis_inputs = np.load(r'C:\Users\tjbro\Desktop\Thesis_Project\Salvaging_Von_Neumann_Entropy\full_input_list_for_location_10_individuals_10_time_20_simulations_10.npy')
-VNE_outputs_IxS = np.load(r'C:\Users\tjbro\Desktop\Grid_search_projections\10_by_10_by_20_by_10\numpy_arrays_of_VNE\IxS_iterating_through_all_3_knobs_where_location_10_individual_10_time_20_simulations_10.npy')
-VNE_outputs_IxI = np.load(r'C:\Users\tjbro\Desktop\Grid_search_projections\10_by_10_by_20_by_10\numpy_arrays_of_VNE\IxI_iterating_through_all_3_knobs_where_location_10_individual_10_time_20_simulations_10.npy')
-VNE_outputs_Tripartite = np.load(r'C:\Users\tjbro\Desktop\Grid_search_projections\10_by_10_by_20_by_10\numpy_arrays_of_VNE\full_tripartite_iterating_through_all_3_knobs_where_location_10_individual_10_time_20_simulations_10.npy')
-VNE_outputs_Homerange_IxI = np.load(r'C:\Users\tjbro\Desktop\Grid_search_projections\10_by_10_by_20_by_10\numpy_arrays_of_VNE\homerange_IxI_iterating_through_all_3_knobs_where_location_10_individual_10_time_20_simulations_10.npy')
-VNE_outputs_SxS = np.load(r'C:\Users\tjbro\Desktop\Grid_search_projections\10_by_10_by_20_by_10\numpy_arrays_of_VNE\SxS_iterating_through_all_3_knobs_where_location_10_individual_10_time_20_simulations_10.npy')
+VNE_outputs_IxS = np.load(r'C:\Users\tjbro\Desktop\Thesis_Project\Thesis_code\10_by_10_by_20_by_10\numpy_arrays_of_VNE\IxS_iterating_through_all_3_knobs_where_location_10_individual_10_time_20_simulations_10.npy')
+VNE_outputs_IxI = np.load(r'C:\Users\tjbro\Desktop\Thesis_Project\Thesis_code\10_by_10_by_20_by_10\numpy_arrays_of_VNE\IxI_iterating_through_all_3_knobs_where_location_10_individual_10_time_20_simulations_10.npy')
+VNE_outputs_Tripartite = np.load(r'C:\Users\tjbro\Desktop\Thesis_Project\Thesis_code\10_by_10_by_20_by_10\numpy_arrays_of_VNE\full_tripartite_iterating_through_all_3_knobs_where_location_10_individual_10_time_20_simulations_10.npy')
+VNE_outputs_Homerange_IxI = np.load(r'C:\Users\tjbro\Desktop\Thesis_Project\Thesis_code\10_by_10_by_20_by_10\numpy_arrays_of_VNE\homerange_IxI_iterating_through_all_3_knobs_where_location_10_individual_10_time_20_simulations_10.npy')
+VNE_outputs_SxS = np.load(r'C:\Users\tjbro\Desktop\Thesis_Project\Thesis_code\10_by_10_by_20_by_10\numpy_arrays_of_VNE\SxS_iterating_through_all_3_knobs_where_location_10_individual_10_time_20_simulations_10.npy')
 
 #inputs = np.load(r'C:\Users\tjbro\Desktop\Thesis_Project\Salvaging_Von_Neumann_Entropy\Michaelis_inputs_location_10_individual_10.npy')
-IxS_v_outputs = np.load(r'C:\Users\tjbro\Desktop\Grid_search_projections\10_by_10_by_20_by_10\arrays_needed_for_LWB\IxS_outputs_location_10_individual_10.npy')
-IxI_v_outputs = np.load(r'C:\Users\tjbro\Desktop\Grid_search_projections\10_by_10_by_20_by_10\arrays_needed_for_LWB\IxI_outputs_location_10_individual_10.npy')
-Tripartite_v_outputs = np.load(r'C:\Users\tjbro\Desktop\Grid_search_projections\10_by_10_by_20_by_10\arrays_needed_for_LWB\Tripartite_outputs_location_10_individual_10.npy')
-Homerange_IxI_v_outputs = np.load(r'C:\Users\tjbro\Desktop\Grid_search_projections\10_by_10_by_20_by_10\arrays_needed_for_LWB\homerange_IxI_outputs_location_10_individual_10.npy')
-SxS_v_outputs = np.load(r'C:\Users\tjbro\Desktop\Grid_search_projections\10_by_10_by_20_by_10\arrays_needed_for_LWB\SxS_outputs_location_10_individual_10.npy')
+IxS_v_outputs = np.load(r'C:\Users\tjbro\Desktop\Thesis_Project\Thesis_code\10_by_10_by_20_by_10\arrays_needed_for_LWB\IxS_outputs_location_10_individual_10.npy')
+IxI_v_outputs = np.load(r'C:\Users\tjbro\Desktop\Thesis_Project\Thesis_code\10_by_10_by_20_by_10\arrays_needed_for_LWB\IxI_outputs_location_10_individual_10.npy')
+Tripartite_v_outputs = np.load(r'C:\Users\tjbro\Desktop\Thesis_Project\Thesis_code\10_by_10_by_20_by_10\arrays_needed_for_LWB\Tripartite_outputs_location_10_individual_10.npy')
+Homerange_IxI_v_outputs = np.load(r'C:\Users\tjbro\Desktop\Thesis_Project\Thesis_code\10_by_10_by_20_by_10\arrays_needed_for_LWB\homerange_IxI_outputs_location_10_individual_10.npy')
+SxS_v_outputs = np.load(r'C:\Users\tjbro\Desktop\Thesis_Project\Thesis_code\10_by_10_by_20_by_10\arrays_needed_for_LWB\SxS_outputs_location_10_individual_10.npy')
 
 # This is computing the Michaelis inputs for each output already calculated
 input_list = list(range(1, time_stamps + 1))
@@ -148,7 +148,7 @@ for i in gamma_values:
             SxS_list.append([i, j, k, SxS_reg.intercept_[0]])
             Tripartite_list.append([i, j, k, Tripartite_reg.intercept_[0]])
 
-            
+
 IxS_Max_VNE_df = pd.DataFrame(np.vstack(np.array(IxS_list)), columns = ['gamma', 'beta', 'rho', 'MaxVNE'])
 IxI_Max_VNE_df = pd.DataFrame(np.vstack(np.array(IxI_list)), columns = ['gamma', 'beta', 'rho', 'MaxVNE'])
 Homerange_IxI_Max_VNE_df = pd.DataFrame(np.vstack(np.array(Homerange_IxI_list)), columns = ['gamma', 'beta', 'rho', 'MaxVNE'])
@@ -156,17 +156,18 @@ Tripartite_Max_VNE_df = pd.DataFrame(np.vstack(np.array(Tripartite_list)), colum
 SxS_Max_VNE_df = pd.DataFrame(np.vstack(np.array(SxS_list)), columns = ['gamma', 'beta', 'rho', 'MaxVNE'])
             
 #####################################################################################
-#
+# This is the size of the text for the graphs
 #####################################################################################
 SMALL_SIZE = 8
 MEDIUM_SIZE = 16
 BIGGER_SIZE = 24
+BIGGEST_SIZE = 32
 
 
 plt.rc('font', size=BIGGER_SIZE)          # controls default text sizes
 plt.rc('axes', titlesize=BIGGER_SIZE)     # fontsize of the axes title
-plt.rc('axes', labelsize=MEDIUM_SIZE)    # fontsize of the x and y labels
-plt.rc('xtick', labelsize=MEDIUM_SIZE)    # fontsize of the tick labels
+plt.rc('axes', labelsize=BIGGER_SIZE)    # fontsize of the x and y labels
+plt.rc('xtick', labelsize=BIGGER_SIZE)    # fontsize of the tick labels
 plt.rc('ytick', labelsize=BIGGER_SIZE)    # fontsize of the tired_patchs
 plt.rc('legend', fontsize=BIGGER_SIZE)    # legend fontsize
 plt.rc('figure', titlesize=SMALL_SIZE)  # fontsize of the figure title
@@ -180,7 +181,54 @@ blue_patch = mpatches.Patch(color='b', label='Homerange IxI')
 yellow_patch = mpatches.Patch(color='y', label='SxS')
 
 #####################################################################################
-#
+# This is getting the VNE for the base value parameters
+#####################################################################################
+IxS_VNE_graphing_df = IxS_VNE_df[IxS_VNE_df.gamma == 1]
+IxS_VNE_graphing_df = IxS_VNE_graphing_df[IxS_VNE_graphing_df.beta == 1]
+IxS_VNE_graphing_df = IxS_VNE_graphing_df[IxS_VNE_graphing_df.rho == 0.1]
+
+IxI_VNE_graphing_df = IxI_VNE_df[IxI_VNE_df.gamma == 1]
+IxI_VNE_graphing_df = IxI_VNE_graphing_df[IxI_VNE_graphing_df.beta == 1]
+IxI_VNE_graphing_df = IxI_VNE_graphing_df[IxI_VNE_graphing_df.rho == 0.1]
+
+Homerange_IxI_VNE_graphing_df = Homerange_IxI_VNE_df[Homerange_IxI_VNE_df.gamma == 1]
+Homerange_IxI_VNE_graphing_df = Homerange_IxI_VNE_graphing_df[Homerange_IxI_VNE_graphing_df.beta == 1]
+Homerange_IxI_VNE_graphing_df = Homerange_IxI_VNE_graphing_df[Homerange_IxI_VNE_graphing_df.rho == 0.1]
+
+Tripartite_VNE_graphing_df = Tripartite_VNE_df[Tripartite_VNE_df.gamma == 1]
+Tripartite_VNE_graphing_df = Tripartite_VNE_graphing_df[Tripartite_VNE_graphing_df.beta == 1]
+Tripartite_VNE_graphing_df = Tripartite_VNE_graphing_df[Tripartite_VNE_graphing_df.rho == 0.1]
+
+SxS_VNE_graphing_df = SxS_VNE_df[SxS_VNE_df.gamma == 1]
+SxS_VNE_graphing_df = SxS_VNE_graphing_df[SxS_VNE_graphing_df.beta == 1]
+SxS_VNE_graphing_df = SxS_VNE_graphing_df[SxS_VNE_graphing_df.rho == 0.1]
+
+#####################################################################################
+# Trying to get the avg value for each time value
+#####################################################################################
+IxS_avg = []
+IxI_avg = []
+Homerange_IxI_avg = []
+Tripartite_avg = []
+SxS_avg = []
+for i in range(time_stamps):
+    IxS_time_step_df = IxS_VNE_graphing_df[IxS_VNE_graphing_df.timeStep == i]
+    IxI_time_step_df = IxI_VNE_graphing_df[IxI_VNE_graphing_df.timeStep == i]
+    Homerange_IxI_time_step_df = Homerange_IxI_VNE_graphing_df[Homerange_IxI_VNE_graphing_df.timeStep == i]
+    Tripartite_time_step_df = Tripartite_VNE_graphing_df[Tripartite_VNE_graphing_df.timeStep == i]
+    SxS_time_step_df = SxS_VNE_graphing_df[SxS_VNE_graphing_df.timeStep == i]
+    
+    
+    IxS_avg.append(np.sum(IxS_time_step_df.outputValues.values)/10)
+    IxI_avg.append(np.sum(IxI_time_step_df.outputValues.values)/10)
+    Homerange_IxI_avg.append(np.sum(Homerange_IxI_time_step_df.outputValues.values)/10)
+    Tripartite_avg.append(np.sum(Tripartite_time_step_df.outputValues.values)/10)
+    SxS_avg.append(np.sum(SxS_time_step_df.outputValues.values)/10)
+
+print('this is the length of the avg array\n', np.array(IxS_avg).shape)
+
+#####################################################################################
+# The values for the Max VNE when looking at rho
 #####################################################################################
 IxS_rho_graphing_df = IxS_Max_VNE_df[IxS_Max_VNE_df.gamma == 1]
 IxS_rho_graphing_df = IxS_rho_graphing_df[IxS_rho_graphing_df.beta == 1]
@@ -191,15 +239,17 @@ IxI_rho_graphing_df = IxI_rho_graphing_df[IxI_rho_graphing_df.beta == 1]
 Homerange_IxI_rho_graphing_df = Homerange_IxI_Max_VNE_df[Homerange_IxI_Max_VNE_df.gamma == 1]
 Homerange_IxI_rho_graphing_df = Homerange_IxI_rho_graphing_df[Homerange_IxI_rho_graphing_df.beta == 1]
 
+
 Tripartite_rho_graphing_df = Tripartite_Max_VNE_df[Tripartite_Max_VNE_df.gamma == 1]
 Tripartite_rho_graphing_df = Tripartite_rho_graphing_df[Tripartite_rho_graphing_df.beta == 1]
 
 SxS_rho_graphing_df = SxS_Max_VNE_df[SxS_Max_VNE_df.gamma == 1]
 SxS_rho_graphing_df = SxS_rho_graphing_df[SxS_rho_graphing_df.beta == 1]
+
 #display(IxS_rho_graphing_df.shape)
 
 #####################################################################################
-#
+# The values for the Max VNE when looking at beta
 #####################################################################################
 IxS_beta_graphing_df = IxS_Max_VNE_df[IxS_Max_VNE_df.gamma == 1]
 IxS_beta_graphing_df = IxS_beta_graphing_df[IxS_beta_graphing_df.rho == 0.1]
@@ -215,11 +265,10 @@ Tripartite_beta_graphing_df = Tripartite_beta_graphing_df[Tripartite_beta_graphi
 
 SxS_beta_graphing_df = SxS_Max_VNE_df[SxS_Max_VNE_df.gamma == 1]
 SxS_beta_graphing_df = SxS_beta_graphing_df[SxS_beta_graphing_df.rho == 0.1]
-
 #display(IxS_beta_graphing_df.shape)
 
 #####################################################################################
-#
+# The values for the Max VNE when looking at gamma
 #####################################################################################
 IxS_gamma_graphing_df = IxS_Max_VNE_df[IxS_Max_VNE_df.beta == 1]
 IxS_gamma_graphing_df = IxS_gamma_graphing_df[IxS_gamma_graphing_df.rho == 0.1]
@@ -235,94 +284,158 @@ Tripartite_gamma_graphing_df = Tripartite_gamma_graphing_df[Tripartite_gamma_gra
 
 SxS_gamma_graphing_df = SxS_Max_VNE_df[SxS_Max_VNE_df.beta == 1]
 SxS_gamma_graphing_df = SxS_gamma_graphing_df[SxS_gamma_graphing_df.rho == 0.1]
-
 #display(IxS_gamma_graphing_df.shape)
+
 #####################################################################################
-#
+# This is the graph of the VNE for each projection
 #####################################################################################
 plt.figure()
+plt.grid(True)
+plt.title('VNE for all projections over different parameters')
+plt.xlabel('Time Steps')
+plt.ylabel('VNE value')
+plt.legend(handles = [red_patch, green_patch, black_patch, blue_patch, yellow_patch], title = 'Projection')
 
+plt.scatter(IxS_VNE_graphing_df.timeStep.values, IxS_VNE_graphing_df.outputValues.values, color = 'r')
+plt.scatter(IxI_VNE_graphing_df.timeStep.values, IxI_VNE_graphing_df.outputValues.values, color = 'g')
+plt.scatter(Homerange_IxI_VNE_graphing_df.timeStep.values, Homerange_IxI_VNE_graphing_df.outputValues.values, color = 'b')
+plt.scatter(Tripartite_VNE_graphing_df.timeStep.values, Tripartite_VNE_graphing_df.outputValues.values, color = 'k')
+plt.scatter(SxS_VNE_graphing_df.timeStep.values, SxS_VNE_graphing_df.outputValues.values, color = 'y')
 
+#plt.scatter([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20], IxS_avg, color = 'r')
+#plt.scatter([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20], IxI_avg, color = 'g')
+#plt.scatter([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20], Homerange_IxI_avg, color = 'b')
+#plt.scatter([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20], Tripartite_avg, color = 'k')
+#plt.scatter([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20], SxS_avg, color = 'y')
 
+plt.plot([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20], IxS_avg, color = 'r')
+plt.plot([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20], IxI_avg, color = 'g')
+plt.plot([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20], Homerange_IxI_avg, color = 'b')
+plt.plot([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20], Tripartite_avg, color = 'k')
+plt.plot([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20], SxS_avg, color = 'y')
+
+#plt.plot(IxS_VNE_graphing_df.timeStep.values, IxS_VNE_graphing_df.outputValues.values)
+#plt.plot(IxI_VNE_graphing_df.timeStep.values, IxI_VNE_graphing_df.outputValues.values)
+#plt.plot(Homerange_IxI_VNE_graphing_df.timeStep.values, Homerange_IxI_VNE_graphing_df.outputValues.values)
+#plt.plot(Tripartite_VNE_graphing_df.timeStep.values, Tripartite_VNE_graphing_df.outputValues.values)
+#plt.plot(SxS_VNE_graphing_df.timeStep.values, SxS_VNE_graphing_df.outputValues.values)
 plt.show()
 
-
-
-#####################################################################################
+######################################################################################
+## This is thre distinct plots with the Lineweaver results
+######################################################################################
+#plt.figure()
+#plt.grid(True)
+#plt.title('VNE Max for rho')
+#plt.xlabel('Rho Values')
+#plt.ylabel('Max VNE')
+#plt.legend(handles = [red_patch, green_patch, black_patch, blue_patch, yellow_patch], title='Projection')
+#plt.scatter(IxS_rho_graphing_df.rho.values, IxS_rho_graphing_df.MaxVNE.values, color = 'r')
+#plt.scatter(IxI_rho_graphing_df.rho.values, IxI_rho_graphing_df.MaxVNE.values, color = 'g')
+#plt.scatter(Homerange_IxI_rho_graphing_df.rho.values, Homerange_IxI_rho_graphing_df.MaxVNE.values, color = 'b')
+#plt.scatter(Tripartite_rho_graphing_df.rho.values, Tripartite_rho_graphing_df.MaxVNE.values, color = 'k')
+#plt.scatter(SxS_rho_graphing_df.rho.values, SxS_rho_graphing_df.MaxVNE.values, color = 'y')
+#plt.plot(IxS_rho_graphing_df.rho.values, IxS_rho_graphing_df.MaxVNE.values, color = 'r')
+#plt.plot(IxI_rho_graphing_df.rho.values, IxI_rho_graphing_df.MaxVNE.values, color = 'g')
+#plt.plot(Homerange_IxI_rho_graphing_df.rho.values, Homerange_IxI_rho_graphing_df.MaxVNE.values, color = 'b')
+#plt.plot(Tripartite_rho_graphing_df.rho.values, Tripartite_rho_graphing_df.MaxVNE.values, color = 'k')
+#plt.plot(SxS_rho_graphing_df.rho.values, SxS_rho_graphing_df.MaxVNE.values, color = 'y')
+#plt.show()
 #
-#####################################################################################
-plt.figure()
+#plt.figure()
+#plt.grid(True)
+#plt.title('VNE Max for beta')
+#plt.xlabel('Beta Values')
+#plt.ylabel('Max VNE')
+#plt.legend(handles = [red_patch, green_patch, black_patch, blue_patch, yellow_patch], title='Projection')
+#plt.scatter(IxS_beta_graphing_df.beta.values, IxS_beta_graphing_df.MaxVNE.values, color = 'r')
+#plt.scatter(IxI_beta_graphing_df.beta.values, IxI_beta_graphing_df.MaxVNE.values, color = 'g')
+#plt.scatter(Homerange_IxI_beta_graphing_df.beta.values, Homerange_IxI_beta_graphing_df.MaxVNE.values, color = 'b')
+#plt.scatter(Tripartite_beta_graphing_df.beta.values, Tripartite_beta_graphing_df.MaxVNE.values, color = 'k')
+#plt.scatter(SxS_beta_graphing_df.beta.values, SxS_beta_graphing_df.MaxVNE.values, color = 'y')
+#plt.plot(IxS_beta_graphing_df.beta.values, IxS_beta_graphing_df.MaxVNE.values, color = 'r')
+#plt.plot(IxI_beta_graphing_df.beta.values, IxI_beta_graphing_df.MaxVNE.values, color = 'g')
+#plt.plot(Homerange_IxI_beta_graphing_df.beta.values, Homerange_IxI_beta_graphing_df.MaxVNE.values, color = 'b')
+#plt.plot(Tripartite_beta_graphing_df.beta.values, Tripartite_beta_graphing_df.MaxVNE.values, color = 'k')
+#plt.plot(SxS_beta_graphing_df.beta.values, SxS_beta_graphing_df.MaxVNE.values, color = 'y')
+#plt.show()
+#
+#plt.figure()
+#plt.grid(True)
+#plt.title('VNE Max for gamma')
+#plt.xlabel('Gamma Values')
+#plt.ylabel('Max VNE')
+#plt.legend(handles = [red_patch, green_patch, black_patch, blue_patch, yellow_patch], title='Projection')
+#plt.scatter(IxS_gamma_graphing_df.gamma.values, IxS_gamma_graphing_df.MaxVNE.values, color = 'r')
+#plt.scatter(IxI_gamma_graphing_df.gamma.values, IxI_gamma_graphing_df.MaxVNE.values, color = 'g')
+#plt.scatter(Homerange_IxI_gamma_graphing_df.gamma.values, Homerange_IxI_gamma_graphing_df.MaxVNE.values, color = 'b')
+#plt.scatter(Tripartite_gamma_graphing_df.gamma.values, Tripartite_gamma_graphing_df.MaxVNE.values, color = 'k')
+#plt.scatter(SxS_gamma_graphing_df.gamma.values, SxS_gamma_graphing_df.MaxVNE.values, color = 'y')
+#plt.plot(IxS_gamma_graphing_df.gamma.values, IxS_gamma_graphing_df.MaxVNE.values, color = 'r')
+#plt.plot(IxI_gamma_graphing_df.gamma.values, IxI_gamma_graphing_df.MaxVNE.values, color = 'g')
+#plt.plot(Homerange_IxI_gamma_graphing_df.gamma.values, Homerange_IxI_gamma_graphing_df.MaxVNE.values, color = 'b')
+#plt.plot(Tripartite_gamma_graphing_df.gamma.values, Tripartite_gamma_graphing_df.MaxVNE.values, color = 'k')
+#plt.plot(SxS_gamma_graphing_df.gamma.values, SxS_gamma_graphing_df.MaxVNE.values, color = 'y')
+#plt.show()
+#
+###################################################################################################
+## This puts the Lineweaver results in the same subplot
+###################################################################################################
+#plt.figure()
 #plt.subplot(221)
-plt.grid(True)
-plt.title('VNE Max for rho')
-plt.xlabel('Rho Values')
-plt.ylabel('Max VNE')
-#plt.yticks(np.linspace(1.0, 1.5, 10, endpoint = True))
-plt.legend(handles = [red_patch, green_patch, black_patch, blue_patch, yellow_patch], title='Projection')
-plt.scatter(IxS_rho_graphing_df.rho.values, IxS_rho_graphing_df.MaxVNE.values, color = 'r')
-plt.scatter(IxI_rho_graphing_df.rho.values, IxI_rho_graphing_df.MaxVNE.values, color = 'g')
-plt.scatter(Homerange_IxI_rho_graphing_df.rho.values, Homerange_IxI_rho_graphing_df.MaxVNE.values, color = 'b')
-plt.scatter(Tripartite_rho_graphing_df.rho.values, Tripartite_rho_graphing_df.MaxVNE.values, color = 'k')
-plt.scatter(SxS_rho_graphing_df.rho.values, SxS_rho_graphing_df.MaxVNE.values, color = 'y')
-plt.plot(IxS_rho_graphing_df.rho.values, IxS_rho_graphing_df.MaxVNE.values, color = 'r')
-plt.plot(IxI_rho_graphing_df.rho.values, IxI_rho_graphing_df.MaxVNE.values, color = 'g')
-plt.plot(Homerange_IxI_rho_graphing_df.rho.values, Homerange_IxI_rho_graphing_df.MaxVNE.values, color = 'b')
-plt.plot(Tripartite_rho_graphing_df.rho.values, Tripartite_rho_graphing_df.MaxVNE.values, color = 'k')
-plt.plot(SxS_rho_graphing_df.rho.values, SxS_rho_graphing_df.MaxVNE.values, color = 'y')
-plt.show()
-
+#plt.grid(True)
+#plt.title('VNE Max for rho')
+#plt.xlabel('Rho Values')
+#plt.ylabel('Max VNE')
+#
+#plt.scatter(IxS_rho_graphing_df.rho.values, IxS_rho_graphing_df.MaxVNE.values, color = 'r')
+#plt.scatter(IxI_rho_graphing_df.rho.values, IxI_rho_graphing_df.MaxVNE.values, color = 'g')
+#plt.scatter(Homerange_IxI_rho_graphing_df.rho.values, Homerange_IxI_rho_graphing_df.MaxVNE.values, color = 'b')
+#plt.scatter(Tripartite_rho_graphing_df.rho.values, Tripartite_rho_graphing_df.MaxVNE.values, color = 'k')
+#plt.scatter(SxS_rho_graphing_df.rho.values, SxS_rho_graphing_df.MaxVNE.values, color = 'y')
+#plt.plot(IxS_rho_graphing_df.rho.values, IxS_rho_graphing_df.MaxVNE.values, color = 'r')
+#plt.plot(IxI_rho_graphing_df.rho.values, IxI_rho_graphing_df.MaxVNE.values, color = 'g')
+#plt.plot(Homerange_IxI_rho_graphing_df.rho.values, Homerange_IxI_rho_graphing_df.MaxVNE.values, color = 'b')
+#plt.plot(Tripartite_rho_graphing_df.rho.values, Tripartite_rho_graphing_df.MaxVNE.values, color = 'k')
+#plt.plot(SxS_rho_graphing_df.rho.values, SxS_rho_graphing_df.MaxVNE.values, color = 'y')
+#
 #plt.subplot(222)
-plt.figure()
-plt.grid(True)
-plt.title('VNE Max for beta')
-plt.xlabel('Beta Values')
-plt.ylabel('Max VNE')
-#plt.yticks(np.linspace(1.0, 1.5, 10, endpoint = True))
-plt.legend(handles = [red_patch, green_patch, black_patch, blue_patch, yellow_patch], title='Projection')
-plt.scatter(IxS_beta_graphing_df.beta.values, IxS_beta_graphing_df.MaxVNE.values, color = 'r')
-plt.scatter(IxI_beta_graphing_df.beta.values, IxI_beta_graphing_df.MaxVNE.values, color = 'g')
-plt.scatter(Homerange_IxI_beta_graphing_df.beta.values, Homerange_IxI_beta_graphing_df.MaxVNE.values, color = 'b')
-plt.scatter(Tripartite_beta_graphing_df.beta.values, Tripartite_beta_graphing_df.MaxVNE.values, color = 'k')
-plt.scatter(SxS_beta_graphing_df.beta.values, SxS_beta_graphing_df.MaxVNE.values, color = 'y')
-plt.plot(IxS_beta_graphing_df.beta.values, IxS_beta_graphing_df.MaxVNE.values, color = 'r')
-plt.plot(IxI_beta_graphing_df.beta.values, IxI_beta_graphing_df.MaxVNE.values, color = 'g')
-plt.plot(Homerange_IxI_beta_graphing_df.beta.values, Homerange_IxI_beta_graphing_df.MaxVNE.values, color = 'b')
-plt.plot(Tripartite_beta_graphing_df.beta.values, Tripartite_beta_graphing_df.MaxVNE.values, color = 'k')
-plt.plot(SxS_beta_graphing_df.beta.values, SxS_beta_graphing_df.MaxVNE.values, color = 'y')
-plt.show()
-
+#plt.grid(True)
+#plt.title('VNE Max for beta')
+#plt.xlabel('Beta Values')
+#plt.ylabel('Max VNE')
+#
+#plt.scatter(IxS_beta_graphing_df.beta.values, IxS_beta_graphing_df.MaxVNE.values, color = 'r')
+#plt.scatter(IxI_beta_graphing_df.beta.values, IxI_beta_graphing_df.MaxVNE.values, color = 'g')
+#plt.scatter(Homerange_IxI_beta_graphing_df.beta.values, Homerange_IxI_beta_graphing_df.MaxVNE.values, color = 'b')
+#plt.scatter(Tripartite_beta_graphing_df.beta.values, Tripartite_beta_graphing_df.MaxVNE.values, color = 'k')
+#plt.scatter(SxS_beta_graphing_df.beta.values, SxS_beta_graphing_df.MaxVNE.values, color = 'y')
+#plt.plot(IxS_beta_graphing_df.beta.values, IxS_beta_graphing_df.MaxVNE.values, color = 'r')
+#plt.plot(IxI_beta_graphing_df.beta.values, IxI_beta_graphing_df.MaxVNE.values, color = 'g')
+#plt.plot(Homerange_IxI_beta_graphing_df.beta.values, Homerange_IxI_beta_graphing_df.MaxVNE.values, color = 'b')
+#plt.plot(Tripartite_beta_graphing_df.beta.values, Tripartite_beta_graphing_df.MaxVNE.values, color = 'k')
+#plt.plot(SxS_beta_graphing_df.beta.values, SxS_beta_graphing_df.MaxVNE.values, color = 'y')
+#plt.show()
+#
 #plt.subplot(223)
-plt.figure()
-plt.grid(True)
-plt.title('VNE Max for gamma')
-plt.xlabel('Gamma Values')
-plt.ylabel('Max VNE')
-#plt.yticks(np.linspace(1.0, 1.5, 10, endpoint = True))
-plt.legend(handles = [red_patch, green_patch, black_patch, blue_patch, yellow_patch], title='Projection')
-plt.scatter(IxS_gamma_graphing_df.gamma.values, IxS_gamma_graphing_df.MaxVNE.values, color = 'r')
-plt.scatter(IxI_gamma_graphing_df.gamma.values, IxI_gamma_graphing_df.MaxVNE.values, color = 'g')
-plt.scatter(Homerange_IxI_gamma_graphing_df.gamma.values, Homerange_IxI_gamma_graphing_df.MaxVNE.values, color = 'b')
-plt.scatter(Tripartite_gamma_graphing_df.gamma.values, Tripartite_gamma_graphing_df.MaxVNE.values, color = 'k')
-plt.scatter(SxS_gamma_graphing_df.gamma.values, SxS_gamma_graphing_df.MaxVNE.values, color = 'y')
-plt.plot(IxS_gamma_graphing_df.gamma.values, IxS_gamma_graphing_df.MaxVNE.values, color = 'r')
-plt.plot(IxI_gamma_graphing_df.gamma.values, IxI_gamma_graphing_df.MaxVNE.values, color = 'g')
-plt.plot(Homerange_IxI_gamma_graphing_df.gamma.values, Homerange_IxI_gamma_graphing_df.MaxVNE.values, color = 'b')
-plt.plot(Tripartite_gamma_graphing_df.gamma.values, Tripartite_gamma_graphing_df.MaxVNE.values, color = 'k')
-plt.plot(SxS_gamma_graphing_df.gamma.values, SxS_gamma_graphing_df.MaxVNE.values, color = 'y')
-plt.show()
-
-#print(SxS_gamma_graphing_df.gamma.values, SxS_gamma_graphing_df.MaxVNE.values)
-#print(SxS_beta_graphing_df.beta.values, SxS_beta_graphing_df.MaxVNE.values)
+#plt.grid(True)
+#plt.title('VNE Max for gamma')
+#plt.xlabel('Gamma Values')
+#plt.ylabel('Max VNE')
+#
+#plt.scatter(IxS_gamma_graphing_df.gamma.values, IxS_gamma_graphing_df.MaxVNE.values, color = 'r')
+#plt.scatter(IxI_gamma_graphing_df.gamma.values, IxI_gamma_graphing_df.MaxVNE.values, color = 'g')
+#plt.scatter(Homerange_IxI_gamma_graphing_df.gamma.values, Homerange_IxI_gamma_graphing_df.MaxVNE.values, color = 'b')
+#plt.scatter(Tripartite_gamma_graphing_df.gamma.values, Tripartite_gamma_graphing_df.MaxVNE.values, color = 'k')
+#plt.scatter(SxS_gamma_graphing_df.gamma.values, SxS_gamma_graphing_df.MaxVNE.values, color = 'y')
+#plt.plot(IxS_gamma_graphing_df.gamma.values, IxS_gamma_graphing_df.MaxVNE.values, color = 'r')
+#plt.plot(IxI_gamma_graphing_df.gamma.values, IxI_gamma_graphing_df.MaxVNE.values, color = 'g')
+#plt.plot(Homerange_IxI_gamma_graphing_df.gamma.values, Homerange_IxI_gamma_graphing_df.MaxVNE.values, color = 'b')
+#plt.plot(Tripartite_gamma_graphing_df.gamma.values, Tripartite_gamma_graphing_df.MaxVNE.values, color = 'k')
+#plt.plot(SxS_gamma_graphing_df.gamma.values, SxS_gamma_graphing_df.MaxVNE.values, color = 'y')
+#
 #plt.subplot(224)
 #plt.legend(handles = [red_patch, green_patch, black_patch, blue_patch, yellow_patch], title= 'Projection')
 #plt.show()
-
-#####################################################################################
 #
-#####################################################################################
-
-#####################################################################################
 #
-#####################################################################################
-
-
