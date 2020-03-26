@@ -7,7 +7,7 @@ import pandas as pd
 import seaborn as sns
 
 
-location_amount = 100
+location_amount = 10
 #location_amount = 6
 individual_amount = 10
 #individual_amount = 4
@@ -23,18 +23,18 @@ simulation_amount = 10
 #print(pd.options.display.max_columns)
 
 #michaelis_inputs = np.load(r'C:\Users\tjbro\Desktop\Thesis_Project\Salvaging_Von_Neumann_Entropy\full_input_list_for_location_10_individuals_10_time_20_simulations_10.npy')
-VNE_outputs_IxS = np.load(r'C:\Users\tjbro\Desktop\Grid_search_projections\100_by_10_by_20_by_10\numpy_arrays_of_VNE\IxS_iterating_through_all_3_knobs_where_location_100_individual_10_time_20_simulations_10.npy')
-VNE_outputs_IxI = np.load(r'C:\Users\tjbro\Desktop\Grid_search_projections\100_by_10_by_20_by_10\numpy_arrays_of_VNE\IxI_iterating_through_all_3_knobs_where_location_100_individual_10_time_20_simulations_10.npy')
-VNE_outputs_Tripartite = np.load(r'C:\Users\tjbro\Desktop\Grid_search_projections\100_by_10_by_20_by_10\numpy_arrays_of_VNE\full_tripartite_iterating_through_all_3_knobs_where_location_100_individual_10_time_20_simulations_10.npy')
-VNE_outputs_Homerange_IxI = np.load(r'C:\Users\tjbro\Desktop\Grid_search_projections\100_by_10_by_20_by_10\numpy_arrays_of_VNE\homerange_IxI_iterating_through_all_3_knobs_where_location_100_individual_10_time_20_simulations_10.npy')
-VNE_outputs_SxS = np.load(r'C:\Users\tjbro\Desktop\Grid_search_projections\100_by_10_by_20_by_10\numpy_arrays_of_VNE\SxS_iterating_through_all_3_knobs_where_location_100_individual_10_time_20_simulations_10.npy')
+VNE_outputs_IxS = np.load(r'C:\Users\tjbro\Desktop\Grid_search_projections\10_by_10_by_20_by_10\numpy_arrays_of_VNE\IxS_iterating_through_all_3_knobs_where_location_10_individual_10_time_20_simulations_10.npy')
+VNE_outputs_IxI = np.load(r'C:\Users\tjbro\Desktop\Grid_search_projections\10_by_10_by_20_by_10\numpy_arrays_of_VNE\IxI_iterating_through_all_3_knobs_where_location_10_individual_10_time_20_simulations_10.npy')
+VNE_outputs_Tripartite = np.load(r'C:\Users\tjbro\Desktop\Grid_search_projections\10_by_10_by_20_by_10\numpy_arrays_of_VNE\full_tripartite_iterating_through_all_3_knobs_where_location_10_individual_10_time_20_simulations_10.npy')
+VNE_outputs_Homerange_IxI = np.load(r'C:\Users\tjbro\Desktop\Grid_search_projections\10_by_10_by_20_by_10\numpy_arrays_of_VNE\homerange_IxI_iterating_through_all_3_knobs_where_location_10_individual_10_time_20_simulations_10.npy')
+VNE_outputs_SxS = np.load(r'C:\Users\tjbro\Desktop\Grid_search_projections\10_by_10_by_20_by_10\numpy_arrays_of_VNE\SxS_iterating_through_all_3_knobs_where_location_10_individual_10_time_20_simulations_10.npy')
 
 #inputs = np.load(r'C:\Users\tjbro\Desktop\Thesis_Project\Salvaging_Von_Neumann_Entropy\Michaelis_inputs_location_10_individual_10.npy')
-IxS_v_outputs = np.load(r'C:\Users\tjbro\Desktop\Grid_search_projections\100_by_10_by_20_by_10\arrays_needed_for_LWB\IxS_outputs_location_100_individual_10.npy')
-IxI_v_outputs = np.load(r'C:\Users\tjbro\Desktop\Grid_search_projections\100_by_10_by_20_by_10\arrays_needed_for_LWB\IxI_outputs_location_100_individual_10.npy')
-Tripartite_v_outputs = np.load(r'C:\Users\tjbro\Desktop\Grid_search_projections\100_by_10_by_20_by_10\arrays_needed_for_LWB\Tripartite_outputs_location_100_individual_10.npy')
-Homerange_IxI_v_outputs = np.load(r'C:\Users\tjbro\Desktop\Grid_search_projections\100_by_10_by_20_by_10\arrays_needed_for_LWB\homerange_IxI_outputs_location_100_individual_10.npy')
-SxS_v_outputs = np.load(r'C:\Users\tjbro\Desktop\Grid_search_projections\100_by_10_by_20_by_10\arrays_needed_for_LWB\SxS_outputs_location_100_individual_10.npy')
+IxS_v_outputs = np.load(r'C:\Users\tjbro\Desktop\Grid_search_projections\10_by_10_by_20_by_10\arrays_needed_for_LWB\IxS_outputs_location_10_individual_10.npy')
+IxI_v_outputs = np.load(r'C:\Users\tjbro\Desktop\Grid_search_projections\10_by_10_by_20_by_10\arrays_needed_for_LWB\IxI_outputs_location_10_individual_10.npy')
+Tripartite_v_outputs = np.load(r'C:\Users\tjbro\Desktop\Grid_search_projections\10_by_10_by_20_by_10\arrays_needed_for_LWB\Tripartite_outputs_location_10_individual_10.npy')
+Homerange_IxI_v_outputs = np.load(r'C:\Users\tjbro\Desktop\Grid_search_projections\10_by_10_by_20_by_10\arrays_needed_for_LWB\homerange_IxI_outputs_location_10_individual_10.npy')
+SxS_v_outputs = np.load(r'C:\Users\tjbro\Desktop\Grid_search_projections\10_by_10_by_20_by_10\arrays_needed_for_LWB\SxS_outputs_location_10_individual_10.npy')
 
 # This is computing the Michaelis inputs for each output already calculated
 input_list = list(range(1, time_stamps + 1))
@@ -237,6 +237,16 @@ SxS_gamma_graphing_df = SxS_Max_VNE_df[SxS_Max_VNE_df.beta == 1]
 SxS_gamma_graphing_df = SxS_gamma_graphing_df[SxS_gamma_graphing_df.rho == 0.1]
 
 #display(IxS_gamma_graphing_df.shape)
+#####################################################################################
+#
+#####################################################################################
+plt.figure()
+
+
+
+plt.show()
+
+
 
 #####################################################################################
 #
