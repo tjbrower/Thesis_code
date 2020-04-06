@@ -7,9 +7,9 @@ import matplotlib.pyplot as plt
 import matplotlib.patches as mpatches
 
 
-location_amount = 100
+location_amount = 10
 #location_amount = 6
-individual_amount = 10
+individual_amount = 50
 #individual_amount = 4
 time_stamps = 20
 #groups = 5
@@ -125,15 +125,15 @@ def calc_V(collection, time_stamps, amount_of_simulations, variable):
 ####################################################################################################
     
 ## This block of code loads a desired np.array so we don't have to run the simulations
-full_IxS_collection = np.load(r'C:\Users\tjbro\Desktop\Grid_search_projections\100_by_10_by_20_by_10\numpy_arrays_of_VNE\IxS_iterating_through_all_3_knobs_where_location_100_individual_10_time_20_simulations_10.npy')
-full_IxI_collection = np.load(r'C:\Users\tjbro\Desktop\Grid_search_projections\100_by_10_by_20_by_10\numpy_arrays_of_VNE\IxI_iterating_through_all_3_knobs_where_location_100_individual_10_time_20_simulations_10.npy')
-full_tripartite_collection = np.load(r'C:\Users\tjbro\Desktop\Grid_search_projections\100_by_10_by_20_by_10\numpy_arrays_of_VNE\full_tripartite_iterating_through_all_3_knobs_where_location_100_individual_10_time_20_simulations_10.npy')
-full_homerange_IxI_collection = np.load(r'C:\Users\tjbro\Desktop\Grid_search_projections\100_by_10_by_20_by_10\numpy_arrays_of_VNE\homerange_IxI_iterating_through_all_3_knobs_where_location_100_individual_10_time_20_simulations_10.npy')
-full_SxS_collection = np.load(r'C:\Users\tjbro\Desktop\Grid_search_projections\100_by_10_by_20_by_10\numpy_arrays_of_VNE\SxS_iterating_through_all_3_knobs_where_location_100_individual_10_time_20_simulations_10.npy')
+full_IxS_collection = np.load(r'C:\Users\tjbro\Desktop\Grid_search_projections\10_by_50_by_20_by_10\numpy_arrays_of_VNE\IxS_iterating_through_all_3_knobs_where_location_10_individual_50_time_20_simulations_10.npy')
+full_IxI_collection = np.load(r'C:\Users\tjbro\Desktop\Grid_search_projections\10_by_50_by_20_by_10\numpy_arrays_of_VNE\IxI_iterating_through_all_3_knobs_where_location_10_individual_50_time_20_simulations_10.npy')
+full_tripartite_collection = np.load(r'C:\Users\tjbro\Desktop\Grid_search_projections\10_by_50_by_20_by_10\numpy_arrays_of_VNE\full_tripartite_iterating_through_all_3_knobs_where_location_10_individual_50_time_20_simulations_10.npy')
+full_homerange_IxI_collection = np.load(r'C:\Users\tjbro\Desktop\Grid_search_projections\10_by_50_by_20_by_10\numpy_arrays_of_VNE\homerange_IxI_iterating_through_all_3_knobs_where_location_10_individual_50_time_20_simulations_10.npy')
+full_SxS_collection = np.load(r'C:\Users\tjbro\Desktop\Grid_search_projections\10_by_50_by_20_by_10\numpy_arrays_of_VNE\SxS_iterating_through_all_3_knobs_where_location_10_individual_50_time_20_simulations_10.npy')
 ##beta_binary_IxS_collection = np.load('IxS_binary_beta_collection_50_time_10_simulations.npy')
 ##beta_binary_IxI_collection = np.load('IxI_binary_beta_collection_50_time_10_simulations.npy')
 
-full_input_list = np.load(r'C:\Users\tjbro\Desktop\Grid_search_projections\100_by_10_by_20_by_10\numpy_arrays_of_VNE\full_input_list_for_location_100_individuals_10_time_20_simulations_10.npy')
+full_input_list = np.load(r'C:\Users\tjbro\Desktop\Grid_search_projections\10_by_50_by_20_by_10\numpy_arrays_of_VNE\full_input_list_for_location_10_individuals_50_time_20_simulations_10.npy')
 
 print('From left to right I have simulation\n gamma\n Beta\n and rho values\n and here is its shape\n', full_IxS_collection.shape)
 print('this is the IxS collection\n', full_IxS_collection)
@@ -160,9 +160,9 @@ print('and this is the outputs after the computing my v matrix\n', np.array(outp
 
 print('these are the michaelis inputs\n', michaelis_inputs)
 # These save the arrays so I can call it in another file.
-np.save('Michaelis_inputs_location_100_individual_10', michaelis_inputs)
-np.save('IxS_outputs_location_100_individual_10', outputs_IxS)
-np.save('IxI_outputs_location_100_individual_10', outputs_IxI)
-np.save('Tripartite_outputs_location_100_individual_10', outputs_tripartite)
-np.save('homerange_IxI_outputs_location_100_individual_10', outputs_homerange_IxI)
-np.save('SxS_outputs_location_100_individual_10', outputs_SxS)
+np.save('Michaelis_inputs_location_10_individual_50', michaelis_inputs)
+np.save('IxS_outputs_location_10_individual_50', outputs_IxS)
+np.save('IxI_outputs_location_10_individual_50', outputs_IxI)
+np.save('Tripartite_outputs_location_10_individual_50', outputs_tripartite)
+np.save('homerange_IxI_outputs_location_10_individual_50', outputs_homerange_IxI)
+np.save('SxS_outputs_location_10_individual_50', outputs_SxS)
