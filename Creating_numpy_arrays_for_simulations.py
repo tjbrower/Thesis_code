@@ -18,22 +18,7 @@ import matplotlib.patches as mpatches
 #        if alpha_for_dirichlet[i] == 0.0:
 #            alpha_for_dirichlet[i] = 0.000000001
 #    print('this is the alpha for dirichlet\n', alpha_for_dirichlet)
-#    vector = dirichlet.rvs(alpha_for_dirichlet, size=1)
-#    print('This is the vector\n', vector)
-#        # all of the above is completely necessary to give the 'weights' required to 
-#        # each location 
-#
-#    full_matrix = np.zeros((number_of_individuals, number_of_locations))
-#    #print('full matrix shape\n', full_matrix.shape)
-#    list_of_tripartite = []
-#    #print("alpha vector\n", vector[0])
-#    #for p in range(time_stamps):
-#    #print('Number of locations\n', number_of_locations, '\n alpha vector\n', vector[0],
-#    #      '\nhere are their shapes\n', len(vector[0]))
-#    #print('number of ind\n', number_of_individuals)
-#    for q in range(number_of_individuals):
-#        j = np.random.choice(number_of_locations, 1, p = vector[0])
-#        #j = individual_location
+#    vector = dirichlet.rvs(alpha_for_dirichlet, size=1)////
 #        full_matrix[q][j] = 1.0
 #    list_of_tripartite.append(full_matrix)
 #    #print("This should be our new row combined matrix\n", full_matrix)
@@ -48,6 +33,7 @@ def creating_spatial_preference_vector(number_of_locations, number_of_individual
     a, b = 1.0, beta_value
     x = np.linspace(0.1, 1.0, number_of_locations)
     alpha_for_dirichlet = beta.pdf(x,a,b)
+    alpha_for_dirichlet = alpha_for_dirichlet/sum(alpha_for_dirichlet)
     for i in range(number_of_locations):
         if alpha_for_dirichlet[i] == 0.0:
             alpha_for_dirichlet[i] = 0.000000001
@@ -128,16 +114,16 @@ def each_timestamp_matrix(number_of_locations, number_of_individuals, spatial_pr
 #          '\nthis is the amount of locations that have a probability being here\n', non_zero_entries, 
 #          '\nlength of vector\n', len(indices_of_interest))
 #     I now need to assign each group to a location WITHOUT replacement
-    all_locations_for_the_groups_without_replacement = np.random.choice(number_of_locations, len(indices_of_interest), replace =True, p = spatial_preference_vector[0])
+#    all_locations_for_the_groups_without_replacement = np.random.choice(number_of_locations, len(indices_of_interest), replace =True, p = spatial_preference_vector[0])
 
 
-    if non_zero_entries < len(indices_of_interest):
-        all_locations_for_the_groups_without_replacement = np.random.choice(number_of_locations, len(indices_of_interest), replace =True, p = spatial_preference_vector[0])
-    else:
-        all_locations_for_the_groups_without_replacement = np.random.choice(number_of_locations, len(indices_of_interest), replace =False, p = spatial_preference_vector[0])
+#    if non_zero_entries < len(indices_of_interest):
+#        all_locations_for_the_groups_without_replacement = np.random.choice(number_of_locations, len(indices_of_interest), replace =True, p = spatial_preference_vector[0])
+#    else:
+    all_locations_for_the_groups_without_replacement = np.random.choice(number_of_locations, len(indices_of_interest), replace =False, p = spatial_preference_vector[0])
     
-#    print('This is sampling without replacement for the locations for all GROUPS!\n', 
-#          all_locations_for_the_groups_without_replacement)
+    print('This is sampling without replacement for the locations for all GROUPS!\n', 
+          all_locations_for_the_groups_without_replacement)
     
     # This is the same length as the number of groups that are 'filled'
     # a.k.a this is the amount of groups we are considering
@@ -702,7 +688,7 @@ def calc_V(collection, time_stamps, amount_of_simulations, variable):
                             print('did I break?')
                         print('still in the minimum element = 0 section')
                     distance = maximum_element - minimum_element
-                    middle_element = distance/2 + minimum_element
+                    middle_element = maximum_element/2
                     per_rho_v_array = []
                     Michaelis_constant = 0
                     for t in range(time_stamps):

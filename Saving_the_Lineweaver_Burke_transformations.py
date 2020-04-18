@@ -15,7 +15,7 @@ time_stamps = 20
 #groups = 5
 gamma_values = np.linspace(1, 10, 10, endpoint = True)
 beta_values = np.linspace(1, 10, 10, endpoint = True)
-rho_values = np.linspace(0.1, 1.0, 10, endpoint=True)
+rho_values = [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.72, 0.74, 0.76, 0.78, 0.8, 0.82, 0.84, 0.86, 0.88, 0.9, 0.92, 0.94, 0.96, 0.98, 1.0]#np.linspace(0.1, 1.0, 10, endpoint=True)
 #simulation_amount = 10
 simulation_amount = 10
 
@@ -62,8 +62,7 @@ def calc_V(collection, time_stamps, amount_of_simulations, variable):
                                 break
 #                            print('did I break?')
 #                        print('still in the minimum element = 0 section')
-                    distance = maximum_element - minimum_element
-                    middle_element = distance/2 + minimum_element
+                    middle_element = maximum_element/2
                     per_rho_v_array = []
                     for t in range(time_stamps):
                         if collection[j][i][k][z][t] >= middle_element and Michaelis_constant == 0:
@@ -125,15 +124,15 @@ def calc_V(collection, time_stamps, amount_of_simulations, variable):
 ####################################################################################################
     
 ## This block of code loads a desired np.array so we don't have to run the simulations
-full_IxS_collection = np.load(r'C:\Users\tjbro\Desktop\Grid_search_projections\10_by_50_by_20_by_10\numpy_arrays_of_VNE\IxS_iterating_through_all_3_knobs_where_location_10_individual_50_time_20_simulations_10.npy')
-full_IxI_collection = np.load(r'C:\Users\tjbro\Desktop\Grid_search_projections\10_by_50_by_20_by_10\numpy_arrays_of_VNE\IxI_iterating_through_all_3_knobs_where_location_10_individual_50_time_20_simulations_10.npy')
-full_tripartite_collection = np.load(r'C:\Users\tjbro\Desktop\Grid_search_projections\10_by_50_by_20_by_10\numpy_arrays_of_VNE\full_tripartite_iterating_through_all_3_knobs_where_location_10_individual_50_time_20_simulations_10.npy')
-full_homerange_IxI_collection = np.load(r'C:\Users\tjbro\Desktop\Grid_search_projections\10_by_50_by_20_by_10\numpy_arrays_of_VNE\homerange_IxI_iterating_through_all_3_knobs_where_location_10_individual_50_time_20_simulations_10.npy')
-full_SxS_collection = np.load(r'C:\Users\tjbro\Desktop\Grid_search_projections\10_by_50_by_20_by_10\numpy_arrays_of_VNE\SxS_iterating_through_all_3_knobs_where_location_10_individual_50_time_20_simulations_10.npy')
+full_IxS_collection = np.load(r'C:\Users\tjbro\Desktop\Thesis_Project\Thesis_code\10_by_50_by_20_by_10\numpy_arrays_of_VNE\IxS_iterating_through_all_3_knobs_where_location_10_individual_50_time_20_simulations_10.npy')
+full_IxI_collection = np.load(r'C:\Users\tjbro\Desktop\Thesis_Project\Thesis_code\10_by_50_by_20_by_10\numpy_arrays_of_VNE\IxI_iterating_through_all_3_knobs_where_location_10_individual_50_time_20_simulations_10.npy')
+full_tripartite_collection = np.load(r'C:\Users\tjbro\Desktop\Thesis_Project\Thesis_code\10_by_50_by_20_by_10\numpy_arrays_of_VNE\full_tripartite_iterating_through_all_3_knobs_where_location_10_individual_50_time_20_simulations_10.npy')
+full_homerange_IxI_collection = np.load(r'C:\Users\tjbro\Desktop\Thesis_Project\Thesis_code\10_by_50_by_20_by_10\numpy_arrays_of_VNE\homerange_IxI_iterating_through_all_3_knobs_where_location_10_individual_50_time_20_simulations_10.npy')
+full_SxS_collection = np.load(r'C:\Users\tjbro\Desktop\Thesis_Project\Thesis_code\10_by_50_by_20_by_10\numpy_arrays_of_VNE\SxS_iterating_through_all_3_knobs_where_location_10_individual_50_time_20_simulations_10.npy')
 ##beta_binary_IxS_collection = np.load('IxS_binary_beta_collection_50_time_10_simulations.npy')
 ##beta_binary_IxI_collection = np.load('IxI_binary_beta_collection_50_time_10_simulations.npy')
 
-full_input_list = np.load(r'C:\Users\tjbro\Desktop\Grid_search_projections\10_by_50_by_20_by_10\numpy_arrays_of_VNE\full_input_list_for_location_10_individuals_50_time_20_simulations_10.npy')
+full_input_list = np.load(r'C:\Users\tjbro\Desktop\Thesis_Project\Thesis_code\10_by_50_by_20_by_10\numpy_arrays_of_VNE\full_input_list_for_location_10_individuals_50_time_20_simulations_10.npy')
 
 print('From left to right I have simulation\n gamma\n Beta\n and rho values\n and here is its shape\n', full_IxS_collection.shape)
 print('this is the IxS collection\n', full_IxS_collection)

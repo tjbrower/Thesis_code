@@ -7,7 +7,7 @@ import pandas as pd
 import seaborn as sns
 
 
-location_amount = 50
+location_amount = 10
 #location_amount = 6
 individual_amount = 10
 #individual_amount = 4
@@ -15,7 +15,7 @@ time_stamps = 20
 #groups = 5
 gamma_values = np.linspace(1, 10, 10, endpoint = True)
 beta_values = np.linspace(1, 10, 10, endpoint = True)
-rho_values = np.linspace(0.1, 1.0, 10, endpoint=True)
+rho_values = [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.72, 0.74, 0.76, 0.78, 0.8, 0.82, 0.84, 0.86, 0.88, 0.9, 0.92, 0.94, 0.96, 0.98, 1.0]#np.linspace(0.1, 1.0, 10, endpoint=True)
 #simulation_amount = 10
 simulation_amount = 10
 
@@ -23,18 +23,18 @@ simulation_amount = 10
 #print(pd.options.display.max_columns)
 
 #michaelis_inputs = np.load(r'C:\Users\tjbro\Desktop\Thesis_Project\Salvaging_Von_Neumann_Entropy\full_input_list_for_location_10_individuals_10_time_20_simulations_10.npy')
-VNE_outputs_IxS = np.load(r'C:\Users\tjbro\Desktop\Thesis_Project\Thesis_code\50_by_10_by_20_by_10\numpy_arrays_of_VNE\IxS_iterating_through_all_3_knobs_where_location_50_individual_10_time_20_simulations_10.npy')
-VNE_outputs_IxI = np.load(r'C:\Users\tjbro\Desktop\Thesis_Project\Thesis_code\50_by_10_by_20_by_10\numpy_arrays_of_VNE\IxI_iterating_through_all_3_knobs_where_location_50_individual_10_time_20_simulations_10.npy')
-VNE_outputs_Tripartite = np.load(r'C:\Users\tjbro\Desktop\Thesis_Project\Thesis_code\50_by_10_by_20_by_10\numpy_arrays_of_VNE\full_tripartite_iterating_through_all_3_knobs_where_location_50_individual_10_time_20_simulations_10.npy')
-VNE_outputs_Homerange_IxI = np.load(r'C:\Users\tjbro\Desktop\Thesis_Project\Thesis_code\50_by_10_by_20_by_10\numpy_arrays_of_VNE\homerange_IxI_iterating_through_all_3_knobs_where_location_50_individual_10_time_20_simulations_10.npy')
-VNE_outputs_SxS = np.load(r'C:\Users\tjbro\Desktop\Thesis_Project\Thesis_code\50_by_10_by_20_by_10\numpy_arrays_of_VNE\SxS_iterating_through_all_3_knobs_where_location_50_individual_10_time_20_simulations_10.npy')
+VNE_outputs_IxS = np.load(r'C:\Users\tjbro\Desktop\Thesis_Project\Thesis_code\10_by_10_by_20_by_10\numpy_arrays_of_VNE\IxS_iterating_through_all_3_knobs_where_location_10_individual_10_time_20_simulations_10.npy')
+VNE_outputs_IxI = np.load(r'C:\Users\tjbro\Desktop\Thesis_Project\Thesis_code\10_by_10_by_20_by_10\numpy_arrays_of_VNE\IxI_iterating_through_all_3_knobs_where_location_10_individual_10_time_20_simulations_10.npy')
+VNE_outputs_Tripartite = np.load(r'C:\Users\tjbro\Desktop\Thesis_Project\Thesis_code\10_by_10_by_20_by_10\numpy_arrays_of_VNE\full_tripartite_iterating_through_all_3_knobs_where_location_10_individual_10_time_20_simulations_10.npy')
+VNE_outputs_Homerange_IxI = np.load(r'C:\Users\tjbro\Desktop\Thesis_Project\Thesis_code\10_by_10_by_20_by_10\numpy_arrays_of_VNE\homerange_IxI_iterating_through_all_3_knobs_where_location_10_individual_10_time_20_simulations_10.npy')
+VNE_outputs_SxS = np.load(r'C:\Users\tjbro\Desktop\Thesis_Project\Thesis_code\10_by_10_by_20_by_10\numpy_arrays_of_VNE\SxS_iterating_through_all_3_knobs_where_location_10_individual_10_time_20_simulations_10.npy')
 
 #inputs = np.load(r'C:\Users\tjbro\Desktop\Thesis_Project\Salvaging_Von_Neumann_Entropy\Michaelis_inputs_location_10_individual_10.npy')
-IxS_v_outputs = np.load(r'C:\Users\tjbro\Desktop\Thesis_Project\Thesis_code\50_by_10_by_20_by_10\arrays_needed_for_LWB\IxS_outputs_location_50_individual_10.npy')
-IxI_v_outputs = np.load(r'C:\Users\tjbro\Desktop\Thesis_Project\Thesis_code\50_by_10_by_20_by_10\arrays_needed_for_LWB\IxI_outputs_location_50_individual_10.npy')
-Tripartite_v_outputs = np.load(r'C:\Users\tjbro\Desktop\Thesis_Project\Thesis_code\50_by_10_by_20_by_10\arrays_needed_for_LWB\Tripartite_outputs_location_50_individual_10.npy')
-Homerange_IxI_v_outputs = np.load(r'C:\Users\tjbro\Desktop\Thesis_Project\Thesis_code\50_by_10_by_20_by_10\arrays_needed_for_LWB\homerange_IxI_outputs_location_50_individual_10.npy')
-SxS_v_outputs = np.load(r'C:\Users\tjbro\Desktop\Thesis_Project\Thesis_code\50_by_10_by_20_by_10\arrays_needed_for_LWB\SxS_outputs_location_50_individual_10.npy')
+IxS_v_outputs = np.load(r'C:\Users\tjbro\Desktop\Thesis_Project\Thesis_code\10_by_10_by_20_by_10\arrays_needed_for_LWB\IxS_outputs_location_10_individual_10.npy')
+IxI_v_outputs = np.load(r'C:\Users\tjbro\Desktop\Thesis_Project\Thesis_code\10_by_10_by_20_by_10\arrays_needed_for_LWB\IxI_outputs_location_10_individual_10.npy')
+Tripartite_v_outputs = np.load(r'C:\Users\tjbro\Desktop\Thesis_Project\Thesis_code\10_by_10_by_20_by_10\arrays_needed_for_LWB\Tripartite_outputs_location_10_individual_10.npy')
+Homerange_IxI_v_outputs = np.load(r'C:\Users\tjbro\Desktop\Thesis_Project\Thesis_code\10_by_10_by_20_by_10\arrays_needed_for_LWB\homerange_IxI_outputs_location_10_individual_10.npy')
+SxS_v_outputs = np.load(r'C:\Users\tjbro\Desktop\Thesis_Project\Thesis_code\10_by_10_by_20_by_10\arrays_needed_for_LWB\SxS_outputs_location_10_individual_10.npy')
 
 # This is computing the Michaelis inputs for each output already calculated
 input_list = list(range(1, time_stamps + 1))
@@ -169,7 +169,7 @@ plt.rc('axes', titlesize=BIGGER_SIZE)    # fontsize of the axes title
 plt.rc('axes', labelsize=BIGGER_SIZE)    # fontsize of the x and y labels
 plt.rc('xtick', labelsize=MEDIUM_SIZE)   # fontsize of the tick labels
 plt.rc('ytick', labelsize=BIGGER_SIZE)   # fontsize of the tired_patchs
-plt.rc('legend', fontsize=BIGGER_SIZE)   # legend fontsize
+plt.rc('legend', fontsize=MEDIUM_SIZE)   # legend fontsize
 plt.rc('figure', titlesize=SMALL_SIZE)   # fontsize of the figure title
 
 colors = ['r', 'g', 'k', 'b', 'y']
@@ -177,7 +177,7 @@ colors = ['r', 'g', 'k', 'b', 'y']
 red_patch = mpatches.Patch(color='r', label='IxS')
 green_patch = mpatches.Patch(color = 'g', label = 'IxI')
 black_patch = mpatches.Patch(color='k', label='Tripartite')
-blue_patch = mpatches.Patch(color='b', label='Homerange IxI')
+blue_patch = mpatches.Patch(color='b', label='Homerange')
 yellow_patch = mpatches.Patch(color='y', label='SxS')
 
 #####################################################################################
@@ -317,11 +317,12 @@ Big_font_size = 56
 
 plt.figure()
 plt.grid(True)
-plt.suptitle('IxS Lineweaver-Burk Plot with Regression Line', fontsize = Big_font_size)
-plt.xlabel('Michaelis Inputs', fontsize = Big_font_size)
-plt.ylabel('1/(Max VNE)', fontsize = Big_font_size)
+#plt.suptitle('IxS Lineweaver-Burk Plot with Regression Line', fontsize = Big_font_size)
+plt.xlabel('Time Step', fontsize = Big_font_size)
+plt.ylabel('VNE value', fontsize = Big_font_size)
 plt.legend(handles = [red_patch, green_patch, black_patch, blue_patch, yellow_patch], title = 'Projection')
-plt.xticks(np.linspace(1, 20, 20, endpoint = True))
+plt.xticks(np.linspace(1, 20, 20, endpoint = True), fontsize = 30)
+plt.yticks(np.linspace(0, 1, 21, endpoint = True))
 plt.scatter(IxS_VNE_graphing_df.timeStep.values, IxS_VNE_graphing_df.outputValues.values, color = 'r')
 plt.scatter(IxI_VNE_graphing_df.timeStep.values, IxI_VNE_graphing_df.outputValues.values, color = 'g')
 plt.scatter(Homerange_IxI_VNE_graphing_df.timeStep.values, Homerange_IxI_VNE_graphing_df.outputValues.values, color = 'b')
@@ -350,21 +351,21 @@ plt.show()
 ######################################################################################
 # This is the visualization of the Lineweaver-Burk plot
 ######################################################################################
-IxS_reg = LR().fit(np.array(IxS_v_graphing_df.michaelisInputs.values).reshape(-1,1), np.array(IxS_v_graphing_df.outputValues.values).reshape(-1,1))
-intercept = IxS_reg.intercept_
-print('these are the coef', intercept)
-outputVector = []
-#for i in IxS_v_graphing_df.michaelisInputs.values:
-#    outputVector.append(coef[0]*i + coef[1])
-print(IxS_v_graphing_df.michaelisInputs.shape, IxS_v_graphing_df.outputValues.shape)
-plt.figure()
-plt.grid(True)
-plt.suptitle('IxS Lineweaver-Burk Plot with Regression Line', fontsize = Big_font_size)
-plt.xlabel('Michaelis Inputs', fontsize = Big_font_size)
-plt.ylabel('1/(Max VNE)', fontsize = Big_font_size)
-#plt.scatter(IxS_v_graphing_df.michaelisInputs.values, IxS_v_graphing_df.outputValues.values, c = 'r')
-sns.regplot(x = 'michaelisInputs', y = 'outputValues', data = IxS_v_graphing_df, color = 'b')
-plt.show()
+#IxS_reg = LR().fit(np.array(IxS_v_graphing_df.michaelisInputs.values).reshape(-1,1), np.array(IxS_v_graphing_df.outputValues.values).reshape(-1,1))
+#intercept = IxS_reg.intercept_
+#print('these are the coef', intercept)
+#outputVector = []
+##for i in IxS_v_graphing_df.michaelisInputs.values:
+##    outputVector.append(coef[0]*i + coef[1])
+#print(IxS_v_graphing_df.michaelisInputs.shape, IxS_v_graphing_df.outputValues.shape)
+#plt.figure()
+#plt.grid(True)
+#plt.suptitle('IxS Lineweaver-Burk Plot with Regression Line', fontsize = Big_font_size)
+#plt.xlabel('Michaelis Inputs', fontsize = Big_font_size)
+#plt.ylabel('1/(Max VNE)', fontsize = Big_font_size)
+##plt.scatter(IxS_v_graphing_df.michaelisInputs.values, IxS_v_graphing_df.outputValues.values, c = 'r')
+#sns.regplot(x = 'michaelisInputs', y = 'outputValues', data = IxS_v_graphing_df, color = 'b')
+#plt.show()
 #####################################################################################
 # This is thre distinct plots with the Lineweaver results
 #####################################################################################
@@ -381,15 +382,17 @@ ax4 = plt.subplot2grid((3,3), (2,0))
 ax5 = plt.subplot2grid((3,3), (2,1))
 ax6 = plt.subplot2grid((3,3), (2,2))
 
-fig.suptitle('Location = 50, Individuals = 10, Time Steps = 20, Simulations = 10', fontsize = Big_font_size)
+plt.legend(handles = [red_patch, green_patch, black_patch, blue_patch, yellow_patch], title='Projection', bbox_to_anchor=(1.05, 1.0), loc='upper left')
+
+#fig.suptitle('Location = 10, Individuals = 10, Time Steps = 20, Simulations = 10', fontsize = Big_font_size)
 
 ax1.grid(True)
 #ax1.title('VNE Max for rho')
 ax1.set_xlabel(r'$\rho$')
 ax1.set_ylabel('Max VNE')
-ax1.set_xticks(np.linspace(0.1, 1, 10, endpoint = True))
-ax1.set_yticks(np.linspace(0.3, 1.0, 15, endpoint = True))
-ax1.legend(handles = [red_patch, green_patch, black_patch, blue_patch, yellow_patch], title='Projection')
+ax1.set_xticks(np.linspace(0.1, 1.0, 10, endpoint = True))
+ax1.set_yticks(np.linspace(0.15, 1.0, 18, endpoint = True))
+#ax1.legend(handles = [red_patch, green_patch, black_patch, blue_patch, yellow_patch], title='Projection')
 ax1.scatter(IxS_rho_graphing_df.rho.values, IxS_rho_graphing_df.MaxVNE.values, color = 'r')
 ax1.scatter(IxI_rho_graphing_df.rho.values, IxI_rho_graphing_df.MaxVNE.values, color = 'g')
 ax1.scatter(Homerange_IxI_rho_graphing_df.rho.values, Homerange_IxI_rho_graphing_df.MaxVNE.values, color = 'b')
@@ -407,7 +410,7 @@ ax2.grid(True)
 ax2.set_xlabel(r'$\beta$')
 #ax2.set_ylabel('Max VNE')
 ax2.set_xticks(np.linspace(1, 10, 10, endpoint = True))
-ax2.set_yticks(np.linspace(0.3, 1.0, 15, endpoint = True))
+ax2.set_yticks(np.linspace(0.15, 1.0, 18, endpoint = True))
 #ax2.legend(handles = [red_patch, green_patch, black_patch, blue_patch, yellow_patch], title='Projection')
 ax2.scatter(IxS_beta_graphing_df.beta.values, IxS_beta_graphing_df.MaxVNE.values, color = 'r')
 ax2.scatter(IxI_beta_graphing_df.beta.values, IxI_beta_graphing_df.MaxVNE.values, color = 'g')
@@ -426,7 +429,7 @@ ax3.grid(True)
 ax3.set_xlabel(r'$\gamma$')
 #ax3.set_ylabel('Max VNE')
 ax3.set_xticks(np.linspace(1, 10, 10, endpoint = True))
-ax3.set_yticks(np.linspace(0.3, 1.0, 15, endpoint = True))
+ax3.set_yticks(np.linspace(0.15, 1.0, 18, endpoint = True))
 #ax3.legend(handles = [red_patch, green_patch, black_patch, blue_patch, yellow_patch], title='Projection')
 ax3.scatter(IxS_gamma_graphing_df.gamma.values, IxS_gamma_graphing_df.MaxVNE.values, color = 'r')
 ax3.scatter(IxI_gamma_graphing_df.gamma.values, IxI_gamma_graphing_df.MaxVNE.values, color = 'g')
