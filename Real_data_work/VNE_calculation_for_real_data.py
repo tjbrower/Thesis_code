@@ -4,41 +4,31 @@ import pandas as pd
 import glob
 
 #############################################################################################
-# The tripartite matrix assembled as one matrix
+# The tripartite network assembled as a matrix
 #############################################################################################
 def assembling_tripartite(list_of_tripartites, time_stamp, individual_amount, location_amount):
     if time_stamp != 1:
-#        print('this is the time stamp values\n', time_stamp)
         collection_of_rows_of_tripartite = []
-#        row_of_matrix = np.zeros((time_stamp, individual_amount, location_amount))
         for i in range(time_stamp):
             row_of_matrix = np.zeros((time_stamp, len(individual_amount), len(location_amount)))
             row_of_matrix[i] = list_of_tripartites[i]
             collection_of_rows_of_tripartite.append(np.hstack(row_of_matrix))
         full_tripartite_matrix = np.vstack(collection_of_rows_of_tripartite)
-#        print('Testint that I get a full tripartite\n', full_tripartite_matrix,
-#              '\n and this is the shape\n', full_tripartite_matrix.shape)
 
         return(full_tripartite_matrix)
     else:
- #       print('THIS IS THE TRIPARTITE!\n', list_of_tripartites[0],
- #             '\n NAD THIS IS ITS SHAPE\n', np.array(list_of_tripartites).shape)
         return(list_of_tripartites[0])
 ##############################################################################################
-# This creates our IxS matrix as desired
+# The IxS network constructed as a matrix
 ##############################################################################################
 def IxS(list_of_tripartites, time_stamps, individual_amount, location_amount):
-#    print(individual_amount)
     full_matrix = np.zeros((len(individual_amount), len(location_amount)))
-    #print(len(list_of_tripartites))
     for i in range(time_stamps):
         full_matrix += list_of_tripartites[i]
-     #   print(full_matrix, '\n')
-#    print("This is the full IxS\n", full_matrix)
     return(full_matrix)
 
 ##############################################################################################
-# This creates our individual by individual square matrix as desired.    
+# The IxI association network constructed as a matrix
 ##############################################################################################
 def unipartite_square_matrix(collection_of_matrices, time_stamps,
                              individuals, locations):
@@ -68,21 +58,13 @@ def unipartite_square_matrix(collection_of_matrices, time_stamps,
                         if m == j:
                             ind_matrix[m][j] = 0
 
-#                else:
-#                    print("There was a zero at this location\n", j, "row and the ", k, "column")
-#    print('this is the association matrix\n', ind_matrix)
     return ind_matrix
 
 ##################################################################################
-# SxS Unipartite Matrix
-# Got the code right. Only increasing a node value if more individuals
-# share the same location. Max value of a node will be equal to the number 
-# of individuals in the simulation.
+# The SxS network constructed as a matrix using the IxS network
 ##################################################################################
 def SxS_Matrix(IxS, individuals, locations):
-    
-#    print('This is the IxS matrix\n', IxS)
-    
+        
     #This creates an exmpty SxS matrix for me to fill
     SxS = np.zeros((len(locations), len(locations)))
     
@@ -91,7 +73,6 @@ def SxS_Matrix(IxS, individuals, locations):
         
         # Grabbing the first column of my IxS matrix my 'starting' column
         first_column = IxS[:,i]    
-#        print('This is the first column we are working with\n', first_column)
         # Creating an empty array to note the amount of overlap there is in locations
             
         # Iterating through all the individuals now
@@ -103,7 +84,6 @@ def SxS_Matrix(IxS, individuals, locations):
             else:
                 # This is the 'next' column we are working with
                 next_column = IxS[:,j]
-#                print('this is hte next column we are working with\n', next_column)
 
             # this is to sum the amount of connections between locations
             node_of_interest = 0
@@ -113,7 +93,6 @@ def SxS_Matrix(IxS, individuals, locations):
                 
                 # If the certain 'location' is being inhabited in both arrays then investigate
                 if first_column[k] > 0 and next_column[k] > 0:
-#                    print('We have reached the first logical step!')
                     node_of_interest += 1                    
                 
             # This is me filling in the SxS matrix with the summed up connections between locations
@@ -122,10 +101,7 @@ def SxS_Matrix(IxS, individuals, locations):
 
     return(SxS)
 ##################################################################################
-# Homerange IxI matrix
-# For this we are comparing individuals separately, meaning
-# we will not have a symmetric matrix. Also we will be normalizing by the
-# amount of inhabited locations by the individuals
+# The Homerange IxI network constructed as a matrix using the IxS network
 ##################################################################################
 def Homerange_IxI(IxS_matrix, time_stamps, 
                   individuals, locations):
@@ -178,7 +154,7 @@ def cal_aida(desired_projection_laplacian):
     return aida
 
 ###################################################################################
-# Functions computing the VNE and normalizing it
+# Functions computing the VNE
 ###################################################################################
 # This calculates the von neumann entropy given our aida vector
 def cal_von_entropy(aida):
@@ -192,8 +168,6 @@ def cal_von_entropy(aida):
         # This is considering the case if aida is less than or equal to zero
         # That way we don't end up with 'nan' outputs
         imaginary = np.isnan(aida[i])
-        #print("This is our aida[i] output\n", aida[i])
-        #print("This should be the truth statement of nan", imaginary)
         if aida[i] <= 0.0 or imaginary == True:
             p += 0
     
@@ -216,7 +190,7 @@ def normalize_von_entropy(von_neumann_entropy_vector, dimension):
     return von_neumann_entropy_value
 
 #############################################################################################################
-# Laplacian functions for unipartite and tripartite matrices
+# Laplacian functions for IxI Association, Homerange, and SxS network
 #############################################################################################################
 def unipartite_laplacian(matrix):
     diag_vals = []
@@ -300,13 +274,12 @@ def Tripartite_laplacian_matrix(matrix, time_stamps, individual_amount):
     return tripartite_laplacian
 
 ###########################################################################################################
-# This gets the amount of individuals and locations being considered for 
-# our real data
+# This gets the amount of individuals and locations recorded for a given spatial variance
 ###########################################################################################################
 def getMaxColumnsAndRows():
     columns = []
     indexes = []
-    for file in glob.glob(r'C:\Users\tjbro\Desktop\Thesis_Project\Thesis_code\Real_data_work\05Data\tab_list_.05\*'):
+    for file in glob.glob(r'C:\Users\tjbro\Desktop\Thesis_Project\Thesis_code\Real_data_work\09Data\tab_list_.09\*'):
         df = pd.read_csv(file)
         df = df.set_index('Unnamed: 0')
         del(df.index.name)
@@ -319,33 +292,29 @@ def getMaxColumnsAndRows():
     return(maxColumns, maxRows)
     
 ###########################################################################################################
-# This adds individuals to time steps that are missing samples for
-# indidividuals. Their placement is randomly chosen uniformly.
+# This adds individuals to recorded samples that are missing.
+# Their placement is randomly chosen based on all other locations they occupied for that spatial data file.
 ###########################################################################################################
 def addRows(df, newDf, maxRows):
     if len(maxRows) == len(list(df.index)):
         return(df)
-#    print('all rows', len(maxRows), 'current rows', len(list(df.index)))
     differentElements = set(maxRows).difference(list(df.index))
-#    print(differentElements, len(differentElements))
     for i in differentElements:
         inhabitedLocations = newDf.loc[i].nonzero()[0]
-#        print('inhabited locations\n', inhabitedLocations, 'length of them\n', len(inhabitedLocations))
         indexOfLocation = np.random.choice(len(inhabitedLocations), 1)
-#        print('index of the location', indexOfLocation)
         newRow = np.zeros(len(list(df.columns)))
         newRow[inhabitedLocations[indexOfLocation]] = 1
         df.loc[i] = newRow 
     return(df)
     
 ###########################################################################################################
-# This creates a new df that shows all the locations we have recorded so we can use
-# those locations when using the probability method from np.numpy.choice()
+# This creates a new df that shows all the locations we have recorded for a given file.
+# Those locations get used when constructing our matrix for our empirical data.
 ###########################################################################################################    
 def getNewDf(maxRows, maxColumns):
     data = np.zeros((len(maxRows), len(maxColumns)))
     newDf = pd.DataFrame(data, maxRows, maxColumns)
-    for file in glob.glob(r'C:\Users\tjbro\Desktop\Thesis_Project\Thesis_code\Real_data_work\05Data\tab_list_.05\*'):
+    for file in glob.glob(r'C:\Users\tjbro\Desktop\Thesis_Project\Thesis_code\Real_data_work\09Data\tab_list_.09\*'):
         df = pd.read_csv(file)
         df = df.set_index('Unnamed: 0')
         del(df.index.name)
@@ -355,14 +324,15 @@ def getNewDf(maxRows, maxColumns):
     return(newDf)
 
 ###########################################################################################################
-# This adds empty locations to make sure the dimensions are all the same for each time step
+# This adds empty locations to make sure the dimensions are all the same for each time step.
 ###########################################################################################################    
 def addColumns(df, maxColumns):
     df = df.loc[:, maxColumns].fillna(0)
     return(df)
 
 ###########################################################################################################
-# This chooses the location the individual is located by looking at the area where they resided
+# This function is needed as the data had multiple readings for each indidividual for a given day.
+# This chooses the location the individual is assigned to by looking at the area where they resided
 # the most during the day and changes that value to a 1 and every other cell value to a zero.
 ###########################################################################################################
 def binaryValues(df):
@@ -373,7 +343,6 @@ def binaryValues(df):
         for j in nonzeroEntries:
             actualEntryValues.append(df.loc[i][j])
             df.loc[i][j] = 0
-        #display(nonzeroEntries, array)
         df.loc[i][nonzeroEntries[np.argmax(actualEntryValues)]] = 1
     return(df)
 ###########################################################################################################
@@ -461,9 +430,9 @@ def fullFunction():
     maxColumns, maxRows = getMaxColumnsAndRows()
     newDf = getNewDf(maxRows, maxColumns)
 
-    print('max rows then columns\n', len(maxRows), '\n', len(maxColumns))
-    for file in glob.glob(r'C:\Users\tjbro\Desktop\Thesis_Project\Thesis_code\Real_data_work\05Data\tab_list_.05\*'):
+    for file in glob.glob(r'C:\Users\tjbro\Desktop\Thesis_Project\Thesis_code\Real_data_work\09Data\tab_list_.09\*'):
         df, maxRows, maxColumns = createTimeStepMatrix(file, newDf, maxRows, maxColumns)
+        print(df.shape)
         timeStepMatrices.append(df.to_numpy())
         IxSMatrix, IxIMatrix, tripartiteMatrix, homerangeMatrix, SxSMatrix = constructingNetworks(timeStepMatrices, maxRows, maxColumns)
         IxSLaplacian, IxILaplacian, tripartiteLaplacian, homerangeLaplacian, SxSLaplacian = laplacianConstruction(IxSMatrix,
@@ -485,23 +454,20 @@ def fullFunction():
         fullTripartiteVNE.append(normalize_von_entropy(tripartiteVNE, tripartiteLaplacian.shape))
         fullHomerangeVNE.append(normalize_von_entropy(homerangeVNE, homerangeLaplacian.shape))
         fullSxSVNE.append(normalize_von_entropy(SxSVNE, SxSLaplacian.shape))
-        i += 1
-        print('data file done!', i)
-        
+        i += 1        
+    
     return(fullIxSVNE, fullIxIVNE, fullTripartiteVNE, fullHomerangeVNE,
            fullSxSVNE)        
 
 ###########################################################################################################
-# Calling the whole function together
+# This is our 'main' function
 ###########################################################################################################
 fullIxSVNE, fullIxIVNE, fullTripartiteVNE, fullHomerangeVNE, fullSxSVNE = fullFunction()
 
 
-#print(np.array(fullIxSVNE).shape, np.array(fullIxIVNE).shape, np.array(fullTripartiteVNE).shape,
-#      np.array(fullHomerangeVNE).shape, np.array(fullSxSVNE).shape)
 
-#np.save('IxSVNERealData07', fullIxSVNE)
-#np.save('IxIVNERealData07', fullIxIVNE)
-#np.save('tripartiteVNERealData07', fullTripartiteVNE)
-#np.save('homerangeVNERealData07', fullHomerangeVNE)
-#np.save('SxSVNERealData07', fullSxSVNE)
+np.save('IxSVNERealData09', fullIxSVNE)
+np.save('IxIVNERealData09', fullIxIVNE)
+np.save('tripartiteVNERealData09', fullTripartiteVNE)
+np.save('homerangeVNERealData09', fullHomerangeVNE)
+np.save('SxSVNERealData09', fullSxSVNE)
